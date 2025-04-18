@@ -10,7 +10,7 @@ type Schedules = {
   [key: string]: string[];
 };
 
-const timezone = data.timezone || "UTC"; // Coach's timezone
+const timezone = data.timezone || "UTC"; // Coach's timezone - from "moment.tz.guess()"
 const schedules: Schedules = data.schedules;
 const reserved = data.reserved;
 
@@ -50,7 +50,7 @@ const ScheduleGrid: React.FC = () => {
       timezone
     );
 
-    console.log("Save this in DB", datetime.toISOString());
+    // datetime.toISOString() - format to save into the DB
 
     setReservedSet(
       (c) => new Set([...Array.from(c), datetime.format("YYYY-MM-DD HH:mm")])
